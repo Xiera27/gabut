@@ -136,6 +136,26 @@ cat > /etc/xray/config.json << END
           }
         }
      },
+     {
+     "listen": "127.0.0.1",
+     "port": "1993",
+     "protocol": "vmess",
+      "settings": {
+            "clients": [
+               {
+                 "id": "${uuid}",
+                 "alterId": 0
+#vmess-multipath
+             }
+          ]
+       },
+       "streamSettings":{
+         "network": "ws",
+            "wsSettings": {
+                "path": "/worryfree"
+          }
+        }
+     },
     {
       "listen": "127.0.0.1",
       "port": "25432",
@@ -356,7 +376,7 @@ WantedBy=multi-user.target
 EOF
 cat > /etc/systemd/system/runn.service <<EOF
 [Unit]
-Description=Mantap-Sayang
+Description=Tarap-Kuhing-Tunneling
 After=network.target
 
 [Service]
@@ -368,6 +388,9 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOF
+
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+
 
 # Install Trojan Go
 latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
@@ -451,7 +474,7 @@ END
 # Installing Trojan Go Service
 cat > /etc/systemd/system/trojan-go.service << END
 [Unit]
-Description=Trojan-Go Service Mod By Rere02
+Description=Trojan-Go Service Mod By Tarap-Kuhing
 Documentation=github.com/adammoi/vipies
 After=network.target nss-lookup.target
 
@@ -472,11 +495,6 @@ END
 cat > /etc/trojan-go/uuid.txt << END
 $uuid
 END
-# Trojan Go Acount
-cat > /etc/trojan-go/akun.conf << END
-### 
-
-END
 
 #nginx config
 cat >/etc/nginx/conf.d/xray.conf <<EOF
@@ -485,18 +503,8 @@ cat >/etc/nginx/conf.d/xray.conf <<EOF
              listen [::]:80;
              listen 8080;
              listen [::]:8080;
-             listen 8880;
-             listen [::]:8880;
-             listen 2082;
-             listen [::]:2082;
-             listen 8000;
-             listen [::]:8000;
              listen 443 ssl http2 reuseport;
-             listen [::]:443 http2 reuseport;
-             listen 2096 ssl http2 reuseport;
-             listen [::]:2096 http2 reuseport;
-             listen 4433 ssl http2 reuseport;
-             listen [::]:4433 http2 reuseport;
+             listen [::]:443 http2 reuseport;	
              server_name $domain;
              ssl_certificate /etc/xray/xray.crt;
              ssl_certificate_key /etc/xray/xray.key;
@@ -521,6 +529,18 @@ sed -i '$ ilocation = /vmess' /etc/nginx/conf.d/xray.conf
 sed -i '$ i{' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_pass http://127.0.0.1:23456;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Upgrade \$http_upgrade;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Connection "upgrade";' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Host \$http_host;' /etc/nginx/conf.d/xray.conf
+sed -i '$ i}' /etc/nginx/conf.d/xray.conf
+
+sed -i '$ ilocation = /worryfree' /etc/nginx/conf.d/xray.conf
+sed -i '$ i{' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_pass http://127.0.0.1:1993;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
