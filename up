@@ -1,0 +1,171 @@
+#!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+###########- COLOR CODE -##############
+echo -e " [INFO] Downloading Update File"
+sleep 2
+# hapus menu
+rm -rf menu
+rm -rf menu-trial
+rm -rf menu-vmess
+rm -rf menu-vless
+rm -rf running
+rm -rf clearcache
+rm -rf menu-trgo
+rm -rf menu-trojan
+rm -rf fix
+rm -rf menu-ssh
+rm -rf usernew
+rm -rf trial
+rm -rf renew
+rm -rf hapus
+rm -rf cek
+rm -rf member
+rm -rf delete
+rm -rf autokill
+rm -rf ceklim
+rm -rf tendang
+rm -rf menu-set
+rm -rf menu-domain
+rm -rf add-host
+rm -rf port-change
+rm -rf certv2ray
+rm -rf menu-webmin
+rm -rf speedtest
+rm -rf about
+rm -rf auto-reboot
+rm -rf restart
+rm -rf bw
+rm -rf port-ssl
+rm -rf port-ovpn
+rm -rf xp
+rm -rf acs-set
+rm -rf sshws
+rm -rf status
+rm -rf menu-backup
+rm -rf backup
+rm -rf restore
+rm -rf jam
+rm -rf up
+
+# download script
+cd /usr/bin
+# menu
+wget -O clearcache "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/clearcache.sh"
+wget -O delete "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/delete.sh"
+wget -O autokill "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/autokill.sh"
+wget -O ceklim "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/tendang.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/certv2ray.sh"
+wget -O menu-webmin "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-webmin.sh"
+wget -O speedtest "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/speedtest_cli.py"
+wget -O about "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/about.sh"
+wget -O auto-reboot "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/auto-reboot.sh"
+wget -O restart "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/restart.sh"
+wget -O bw "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/bw.sh"
+wget -O xp "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/xp.sh"
+wget -O acs-set "https://raw.githubusercontent.com/Xiera27/gabut/main/acs-set.sh"
+wget -O sshws "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/sshws.sh"
+wget -O status "https://raw.githubusercontent.com/Xiera27/gabut/main/status.sh"
+wget -O jam "https://raw.githubusercontent.com/Xiera27/gabut/main/jam.sh"
+wget -O dmenu "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/dmenu.sh"
+wget -O menu "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu.sh"
+wget -O nsmenu "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/nsmenu.sh"
+wget -O pubkey "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/pubkey.sh"
+wget -O backup "https://raw.githubusercontent.com/Xiera27/gabut/main/backup/backup.sh"
+wget -O restore "https://raw.githubusercontent.com/Xiera27/gabut/main/backup/restore.sh"
+wget -O bmenu "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-bckp.sh"
+wget -O xmenu "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/xmenu.sh"
+wget -O tmenu "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/tmenu.sh"
+wget -O menu-vmess "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-vmess.sh"
+wget -O menu-vless "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-vless.sh"
+wget -O running "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/running.sh"
+wget -O menu-trgo "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-trgo.sh"
+wget -O menu-trojan "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-trojan.sh"
+wget -O menu-ssh "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-ssh.sh"
+wget -O usernew "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/trial.sh"
+wget -O renew "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/renew.sh"
+wget -O hapus "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/hapus.sh"
+wget -O cek "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/cek.sh"
+wget -O member "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/member.sh"
+wget -O delete "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/delete.sh"
+wget -O tendang "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/tendang.sh"
+wget -O menu-set "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/menu-set.sh"
+wget -O add-host "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/add-host.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/certv2ray.sh"
+wget -O speedtest "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/speedtest_cli.py"
+wget -O restart "https://raw.githubusercontent.com/Xiera27/gabut/main/menu/restart.sh"
+wget -O xp "https://raw.githubusercontent.com/Xiera27/gabut/main/ssh/xp.sh"
+wget -O acs-set "https://raw.githubusercontent.com/Xiera27/gabut/main/acs-set.sh"
+wget -O status "https://raw.githubusercontent.com/Xiera27/gabut/main/status.sh"
+wget -O add-ws "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/add-ws.sh"
+wget -O trialvmess "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/trialvmess.sh"
+wget -O renew-ws "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/renew-ws.sh"
+wget -O del-ws "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/del-ws.sh"
+wget -O cek-ws "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/cek-ws.sh"
+wget -O add-vless "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/add-vless.sh"
+wget -O trialvless "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/trialvless.sh"
+wget -O renew-vless "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/renew-vless.sh"
+wget -O del-vless "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/del-vless.sh"
+wget -O cek-vless "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/cek-vless.sh"
+wget -O add-tr "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/add-tr.sh"
+wget -O trialtrojan "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/trialtrojan.sh"
+wget -O del-tr "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/del-tr.sh"
+wget -O renew-tr "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/renew-tr.sh"
+wget -O cek-tr "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/cek-tr.sh"
+wget -O addtrgo "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/addtrgo.sh"
+wget -O trialtrojango "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/trialtrojango.sh"
+wget -O deltrgo "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/deltrgo.sh"
+wget -O renewtrgo "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/renewtrgo.sh"
+wget -O cektrgo "https://raw.githubusercontent.com/Xiera27/gabut/main/xray/cektrgo.sh"
+chmod +x *
+chmod +x /usr/sbin/*
+cd
+
+echo "$ver" > /home/ver
+rm -f update.sh
+clear
+echo ""
+echo -e "\033[0;34m----------------------------------------\033[0m"
+echo -e "\E[44;1;39m            SCRIPT UPDATED              \E[0m"
+echo -e "\033[0;34m----------------------------------------\033[0m"
+echo ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+
+echo -e "  ${BG} >>> INFORMASI UPDATE SCRIP <<< ${NC}"
+
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+
+echo -e "      •> PEMBARUAN SCRIPT <•" | lolcat
+
+echo -e "    •> PENAMBAHAN FILE  <•" | lolcat
+
+echo -e "      •> FIX BUG AND ERROR <•" | lolcat
+
+echo -e "     •> TRIMAKASIH TELAH MENGUNAKAN SCRIPT BY XLORD VPN <•" | lolcat
+
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+
+echo -e "  ${BG} >>> THANKS TO Xlordvpn <<< ${NC}" 
+
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
+;;
+x)
+clear
+update
+;;
+y)
+clear
+menu
+;;
+*)
+clear
+echo -e "\e[1;31mPlease Enter Option 1-2 or x & y Only..,Try again, Thank You..\e[0m"
+sleep 2
+menu
+;;
+esac
